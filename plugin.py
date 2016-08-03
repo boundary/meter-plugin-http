@@ -52,7 +52,7 @@ class HttpCollector(Collector):
 
     def measure_page_load(self):
 	t0 = time()
-	delay = float(randrange(1000, 5000))/1000.0
+	delay = float(randrange(1000, 3000))/1000.0
 	sleep(delay)
 	t1 = time()
 
