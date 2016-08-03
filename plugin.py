@@ -77,7 +77,7 @@ class HttpCollector(Collector):
 class HttpPlugin(Plugin):
     def __init__(self):
         super(HttpPlugin, self).__init__()
-        logging.basicConfig(level=logging.INFO,
+        logging.basicConfig(level=logging.DEBUG,
                             format='[%(levelname)s] (%(threadName)s) %(message)s',
                             stream=sys.stderr)
 

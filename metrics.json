@@ -1,7 +1,7 @@
 {
   "HTTP_PAGE_LOAD": {
     "defaultAggregate": "avg",
-    "defaultResolutionMS": 1000,
+    "defaultResolutionMS": 60000,
     "description": "Web page load duration",
     "displayName": "HTTP Page Load",
     "displayNameShort": "HTTP Page Load",

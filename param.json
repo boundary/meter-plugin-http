@@ -1,19 +1,29 @@
 {
   "items": [
     {
-      "url": "http://www.google.com",
+      "url": "http://web-1/index.html",
       "interval": 1000,
-      "source": "Google"
+      "source": "web-1.flybynightfares.com"
     },
     {
-      "url": "http://www.apple.com",
+      "url": "http://web-2/index.html",
       "interval": 1000,
-      "source": "Apple"
+      "source": "web-2.flybynightfares.com"
     },
     {
-      "url": "http://www.bmc.com",
-      "interval": 5000,
-      "source": "BMC"
+      "url": "http://web-3/index.html",
+      "interval": 1000,
+      "source": "web-3.flybynightfares.com"
+    },
+    {
+      "url": "http://web-4/index.html",
+      "interval": 1000,
+      "source": "web-4.flybynightfares.com"
+    },
+    {
+      "url": "http://web-5/index.html",
+      "interval": 1000,
+      "source": "web-5.flybynightfares.com"
     }
   ],
   "pollInterval": 1000
