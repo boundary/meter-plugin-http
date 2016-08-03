@@ -15,6 +15,7 @@
 from meterplugin import Collector
 from meterplugin import Plugin
 from meterplugin import Measurement
+from meterplugin import MeasurementSinkAPI
 from random import randrange
 from time import time, sleep
 from soup import Soup
@@ -36,6 +37,7 @@ class HttpCollector(Collector):
         super(HttpCollector, self).__init__(interval=interval, name=name)
         self.url = url
         self.source = source
+        self.measurement_output = MeasurementSinkAPI()
 
     def initialize(self):
         """
@@ -63,6 +65,7 @@ class HttpCollector(Collector):
         """
         :return:
         """
+        logger.info("Measuring page load for: {0}".format(self.url))
         soup = Soup(url=self.url)
         value = soup.measure_load_time()
         m = Measurement(metric='HTTP_PAGE_LOAD',
@@ -75,7 +78,7 @@ class HttpPlugin(Plugin):
     def __init__(self):
         super(HttpPlugin, self).__init__()
         logging.basicConfig(level=logging.INFO,
-                            format='[%(levelname)s] (%(threadName)-10s) %(message)s',
+                            format='[%(levelname)s] (%(threadName)s) %(message)s',
                             stream=sys.stderr)
 
     def initialize(self):
