@@ -16,6 +16,7 @@ from meterplugin import Collector
 from meterplugin import Plugin
 from meterplugin import Measurement
 from random import randrange
+from time import time, sleep
 import logging
 
 logger = logging.getLogger(__name__)
@@ -31,7 +32,7 @@ class HttpCollector(Collector):
         :param url: Url to measure the load time
         :param source: Label used for generated measurements
         """
-        super(RandomCollector, self).__init__(interval=interval, name=name)
+        super(HttpCollector, self).__init__(interval=interval, name=name)
         self.url = url
         self.source = source
 
@@ -49,8 +50,13 @@ class HttpCollector(Collector):
         """
         pass
 
-    def measure_page_load()
-        return randrange(5000, 10000),
+    def measure_page_load(self):
+	t0 = time()
+	delay = float(randrange(1000, 5000))/1000.0
+	sleep(delay)
+	t1 = time()
+
+        return round((t1 - t0) * 1000.0,3)
 
     def collect(self):
         """

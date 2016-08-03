@@ -1,0 +1,51 @@
+{
+  "name": "TrueSight Pulse Meter HTTP Plugin",
+  "version": "0.9.0",
+  "meterVersionRequired": "4.2.0-611",
+  "unsupportedPlatforms": [],
+  "tags": "HTTP",
+  "description": "Measures the page load time of a given URL",
+  "command": "plugin-runner -l debug -m plugin -c HttpPlugin",
+  "icon": "http.png",
+  "metrics": [
+    "HTTP_PAGE_LOAD"
+  ],
+  "dashboards": [
+    {
+      "name": "HTTP Page Load",
+      "layout": "d-w=1&d-h=1&d-pad=5&d-light=0&d-bg=000000&d-g-HTTP_PAGE_LOAD=0-0-1-1"
+    }
+  ],
+  "paramArray": {
+    "itemTitle": [
+      "source"
+    ],
+    "schemaTitle": "Instance"
+  },
+  "paramSchema": [
+    {
+      "title": "URL",
+      "name": "url",
+      "description": "Url to measure the time to load the page",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "title": "Interval (ms)",
+      "name": "interval",
+      "description": "How often (in milliseconds) to measure the time to load a the url.",
+      "type": "integer",
+      "default": 1000,
+      "required": true
+    },
+    {
+      "title": "Source",
+      "name": "source",
+      "description": "The Source to display in the legend for the measurement data.",
+      "type": "string",
+      "default": "",
+      "required": true
+    }
+  ]
+}

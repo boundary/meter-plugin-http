@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "url": "http://www.google.com",
+      "interval": 1000,
+      "source": "Google"
+    },
+    {
+      "url": "http://www.apple.com",
+      "interval": 1000,
+      "source": "Apple"
+    },
+    {
+      "url": "http://www.bmc.com",
+      "interval": 5000,
+      "source": "BMC"
+    }
+  ],
+  "pollInterval": 1000
+}
