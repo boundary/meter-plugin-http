@@ -17,13 +17,14 @@ from meterplugin import Plugin
 from meterplugin import Measurement
 from random import randrange
 from time import time, sleep
+from soup import Soup
 import logging
+import sys
 
 logger = logging.getLogger(__name__)
 
 
 class HttpCollector(Collector):
-
     def __init__(self, interval=1000, name=None, url=None, source=None):
         """
         Initialize the HTTP collector
@@ -51,19 +52,21 @@ class HttpCollector(Collector):
         pass
 
     def measure_page_load(self):
-	t0 = time()
-	delay = float(randrange(1000, 3000))/1000.0
-	sleep(delay)
-	t1 = time()
+        t0 = time()
+        delay = float(randrange(1000, 3000)) / 1000.0
+        sleep(delay)
+        t1 = time()
 
-        return round((t1 - t0) * 1000.0,3)
+        return round((t1 - t0) * 1000.0, 3)
 
     def collect(self):
         """
         :return:
         """
+        soup = Soup(url=self.url)
+        value = soup.measure_load_time()
         m = Measurement(metric='HTTP_PAGE_LOAD',
-                        value=self.measure_page_load(),
+                        value=value,
                         source=self.source)
         self.measurement_output.send(m)
 
@@ -71,6 +74,9 @@ class HttpCollector(Collector):
 class HttpPlugin(Plugin):
     def __init__(self):
         super(HttpPlugin, self).__init__()
+        logging.basicConfig(level=logging.INFO,
+                            format='[%(levelname)s] (%(threadName)-10s) %(message)s',
+                            stream=sys.stderr)
 
     def initialize(self):
         """
@@ -94,16 +100,16 @@ class HttpPlugin(Plugin):
         """
 
         # Extract parameters from item
-	if 'interval' in item:
+        if 'interval' in item:
             interval = item['interval']
-	else:
-	    interval = 1000
-	if 'url' in item:
-	    url = item['url']
-	if 'source' in item:
-	    source = item['source']
-	    name = source
-	else:
-	    source = url
+        else:
+            interval = 1000
+        if 'url' in item:
+            url = item['url']
+        if 'source' in item:
+            source = item['source']
+            name = source
+        else:
+            source = url
 
         return HttpCollector(interval=interval, name=name, url=url, source=source)
