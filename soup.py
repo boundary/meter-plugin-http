@@ -16,12 +16,14 @@ def worker(img, url):
     thread worker function
     """
     src = img.get('src')
-    o = urlparse(src)
-    if len(o.netloc) == 0:
-        src = url.scheme + '://' + url.netloc + '/' + src
-    html = urlopen(src)
-    data = html.read()
-    logger.debug(html.geturl())
+    logger.debug("src: {0}".format(src))
+    if src is not None:
+        o = urlparse(src)
+        if len(o.netloc) == 0:
+            src = url.scheme + '://' + url.netloc + '/' + src
+        html = urlopen(src)
+        data = html.read()
+        logger.debug(html.geturl())
     return
 
 
@@ -36,7 +38,7 @@ class Soup(object):
         bsObj = BeautifulSoup(html.read(), 'html.parser')
         threads = []
         for img in bsObj.findAll('img'):
-            t = threading.Thread(target=worker, args=(img, start_url))
+            t = threading.Thread(target=worker, name=img.get('src'), args=(img, start_url))
             threads.append(t)
             t.start()
 
