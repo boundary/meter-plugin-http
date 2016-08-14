@@ -37,7 +37,7 @@ class HttpCollector(Collector):
         super(HttpCollector, self).__init__(interval=interval, name=name)
         self.url = url
         self.source = source
-        self.measurement_output = MeasurementSinkAPI()
+        # self.measurement_output = MeasurementSinkAPI()
 
     def initialize(self):
         """
