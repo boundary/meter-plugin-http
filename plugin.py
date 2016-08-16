@@ -65,13 +65,13 @@ class HttpCollector(Collector):
         """
         :return:
         """
-	try:
+        try:
             logger.info("Measuring page load for: {0}".format(self.url))
             soup = Soup(url=self.url)
             value = soup.measure_load_time()
             m = Measurement(metric='HTTP_PAGE_LOAD',
-                        value=value,
-                        source=self.source)
+                            value=value,
+                            source=self.source)
             self.measurement_output.send(m)
 
 
