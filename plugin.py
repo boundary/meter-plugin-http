@@ -73,6 +73,8 @@ class HttpCollector(Collector):
                             value=value,
                             source=self.source)
             self.measurement_output.send(m)
+        except Exception as e:
+            logger.error(e)
 
 
 class HttpPlugin(Plugin):
