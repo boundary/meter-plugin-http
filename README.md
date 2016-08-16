@@ -32,6 +32,9 @@ This plugin requires that the following Python packages are installed:
 $ pip install beautifulsoup4 meterplugin
 ```
 
+**NOTE**: You must ensure that the program `plugin-runner`(installed with meterplugin) is in the `PATH` for the
+TrueSight Pulse meter.
+
 ### Plugin Configuration Fields
 
 |Field Name    |Description                                                      |
