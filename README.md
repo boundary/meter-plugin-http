@@ -23,11 +23,13 @@ Meter plugin to measures the page load time of a given URL
 
 ### Plugin Setup
 
-This plugin requires that the Python `meterplugin` packages be installed. Using `pip` run
-the following command:
+This plugin requires that the following Python packages are installed:
+
+- `meterplugin`
+- `beautifulsoup4`
 
 ```
-$ pip install meterplugin
+$ pip install beautifulsoup4 meterplugin
 ```
 
 ### Plugin Configuration Fields

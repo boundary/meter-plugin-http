@@ -5,7 +5,7 @@
   "unsupportedPlatforms": [],
   "tags": "HTTP",
   "description": "Measures the page load time of a given URL",
-  "command": "plugin-runner -l debug -m plugin -c HttpPlugin",
+  "command": "plugin-runner -m plugin -c HttpPlugin",
   "icon": "http.png",
   "metrics": [
     "HTTP_PAGE_LOAD"
